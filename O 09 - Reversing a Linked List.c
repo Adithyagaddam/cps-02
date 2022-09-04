@@ -42,21 +42,17 @@ LinkedListNode {
     LinkedListNode *next;
 };
 */
-LinkedListNode* Reverse(LinkedListNode* head) {
-
+void ReversePrint(LinkedListNode* head) {
+    if(head){
+        ReversePrint(head->next);
+        printf("%d ",head->val);
+    }
 }
 
 //BODY ENDS HERE
 
 int main()
 {
-    FILE *f = stdout;
-    char *output_path = getenv("OUTPUT_PATH");
-    if (output_path) {
-        f = fopen(output_path, "w");
-    }
-
-    LinkedListNode* res;
     int head_size = 0;
 
     LinkedListNode* head = NULL;
@@ -74,13 +70,7 @@ int main()
     }
 
 
-    res = Reverse(head);
-    while (res != NULL) {
-        fprintf(f, "%d ", res->val);
-
-        res = res->next;
-    }
-
-    fclose(f);
+    ReversePrint(head);
+    
     return 0;
 }
